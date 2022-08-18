@@ -5,19 +5,19 @@ from matplotlib import pyplot as plt
 def chance_for(n, out_of=35, revealed=5):
     """
     example - imagine a set of 10 questions, 3 completed as shown by *
-    [1 2 3* 4* 5* 6 7 8 9 10]
+    [- - - * - * * - - -]
 
     what is chance of 3 random unique selections all *?
 
     chance of selecting a completed one is 3/10
     now set looks something like this
-    [1 2 4* 5* 6 7 8 9 10]
+    [- - - - * * - - -]
 
     chance of next random selection among completed is 2/9
     set becomes something like
-    [1 2 4* 6 7 8 9 10]
+    [- - - - * - - -]
 
-    final selection now has 1/8 chance of success (ie) choosing 4*
+    final selection now has 1/8 chance of success
 
     so we end up with a computation like (3/10) * (2/9) * (1/8)
 
@@ -27,7 +27,7 @@ def chance_for(n, out_of=35, revealed=5):
     return chance
 
 
-# assume 35 total questions and reveal 5 at random
+# assume 35 total questions 
 questions_completed = list(range(5, 35 + 1))
 chances = [chance_for(n) for n in questions_completed]
 
